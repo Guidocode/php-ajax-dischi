@@ -1,80 +1,98 @@
+
 // VARS
 $primary-color: #2D3945;
 
 
 // GLOBAL
-.global-content{
-  .content-top{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 60px;
-    background-color: $primary-color;
-    font-size: .9rem;
-    .logo{
-      font-size: 35px;
-      color: #35BD59;
-    }
-  }
-  background-color: #1E2D3B;
-  flex-grow: 1;
-  margin-top: 60px;
-  overflow-y: scroll;
-}
+.wrapper{
+  height: 100vh;
+  color: white;
 
+  .global-content{
+    background-color: #1E2D3B;
+    flex-grow: 1;
+    margin-top: 60px;
+    overflow-y: scroll;
+  
 
-
-// CARDS
-.gb-card{
-  background-color: $primary-color;
-  height: 100%;
-  font-size: .8rem;
-  transition: all .2s;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover{
-    transform: scale(1.05);
-    background-color: lighten($primary-color, 70%);
-  }
-  &:hover .title-song{
-    color: #1E2D3B; 
-  }
-  &:hover .cover-image .layover{
-    display: block;
-  }
-  .cover-image{
-    position: relative;
-    .layover{
-      position: absolute;
+    .gb-content-top{
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, .5);
-      color: white;
-      display: none;
+      min-height: 60px;
+      background-color: $primary-color;
+      font-size: .9rem;
+      margin-bottom: 100px;
+      .logo{
+        font-size: 35px;
+        color: #35BD59;
+      }
     }
-    .play-hover{
-      font-size: 2.5rem;
-      animation-name: play;
-      animation-duration: 1.5s;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-      @keyframes play{
-        0%{transform: scale(1)}
-        50%{transform: scale(1.2)}
+    
+
+
+    .gb-container{
+      width: 80%;
+      margin: 0 auto;
+      max-width: 1800px;
+
+      // CARDS
+      .gb-card{
+        background-color: $primary-color;
+        height: 100%;
+        font-size: .8rem;
+        transition: all .2s;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+          transform: scale(1.05);
+          background-color: lighten($primary-color, 70%);
+        }
+        &:hover .title-song{
+          color: #1E2D3B; 
+        }
+        &:hover .cover-image .layover{
+          display: block;
+        }
+        .cover-image{
+          position: relative;
+          .layover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+            color: white;
+            display: none;
+          }
+          .play-hover{
+            font-size: 2.5rem;
+            animation-name: play;
+            animation-duration: 1.5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            @keyframes play{
+              0%{transform: scale(1)}
+              50%{transform: scale(1.2)}
+            }
+          }
+        }
+        .title-song{
+          text-transform: uppercase;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+        .author-song,
+        .date-song{
+          color: lighten($primary-color, 20%);
+        }
+        
       }
     }
   }
-  .title-song{
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  .author-song,
-  .date-song{
-    color: lighten($primary-color, 20%);
-  }
-  
 }
+
+
+
