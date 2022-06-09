@@ -1,0 +1,77 @@
+.global-content {
+  background-color: #1E2D3B;
+  flex-grow: 1;
+  margin-top: 60px;
+  overflow-y: scroll;
+}
+.global-content .content-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 60px;
+  background-color: #2D3945;
+  font-size: 0.9rem;
+}
+.global-content .content-top .logo {
+  font-size: 35px;
+  color: #35BD59;
+}
+
+.gb-card {
+  background-color: #2D3945;
+  height: 100%;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.gb-card:hover {
+  transform: scale(1.05);
+  background-color: #e7ecf0;
+}
+.gb-card:hover .title-song {
+  color: #1E2D3B;
+}
+.gb-card:hover .cover-image .layover {
+  display: block;
+}
+.gb-card .cover-image {
+  position: relative;
+}
+.gb-card .cover-image .layover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: none;
+}
+.gb-card .cover-image .play-hover {
+  font-size: 2.5rem;
+  animation-name: play;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes play {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+.gb-card .title-song {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.gb-card .author-song,
+.gb-card .date-song {
+  color: #556c83;
+}
+
+/*# sourceMappingURL=style.css.map */
