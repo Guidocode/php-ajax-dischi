@@ -15,6 +15,10 @@
   <!-- Axios -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
   <link rel="stylesheet" href="./style/style.css">
 
   <title>Php dischi milestone 2</title>
@@ -22,67 +26,73 @@
 <body>
   
   <div id="app" class="wrapper d-flex flex-column">
-
     <div class="global-content">
       
       <!-- CONTENT TOP -->
-      <div class="gb-content-top d-flex justify-content-between align-items-center px-3">
+        <div class="gb-content-top d-flex justify-content-between align-items-center px-3">
 
-        <div class="logo">
-          <i class="fa-brands fa-spotify"></i>
+          <div class="logo">
+            <i class="fa-brands fa-spotify"></i>
+          </div>
+
+
+          <div class="select d-flex">
+
+            <div class="input-group w-auto">
+              <select v-model="selectedGenre" @change="getApi()" class="custom-select p-2" id="inputGroupSelect02">
+                <option value="All" selected>Seleziona un genere</option>
+
+                <option
+                v-for="(genre, index) in genres" :key="`genre-${index}`"
+                :value="genre">{{genre}}</option>
+
+              </select>
+            </div>
+
+          </div>
+        
         </div>
-
-
-        <div class="select d-flex">
-
-          <p>Select 1</p>
-          <p>Select 2</p>
-
-        </div>
-      
-      </div>
-      
       <!-- /CONTENT TOP -->
 
 
-      <div class="gb-container p-5">
+      <!-- CONTENT BOTTOM -->
+        <div class="gb-container p-5">
+
+          <!-- Logica errore -->
+          <div v-if="!isError" class="container-fluid">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex">
 
 
-        <div class="container-fluid">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex">
-
-
-            
-            <div v-for="(disc, index) in discs" :key="`disc-${index}`"
-             class="col mb-4">
-              <div class="gb-card text-center p-2">
-                <div class="cover-image">
-                  <img class="w-100" :src="disc.poster" :alt="disc.title">
-                  <!-- Layover e animazione -->
-                  <div class="layover">
-                    <div class="play-hover d-flex justify-content-center align-items-center h-100">
-                      <i class="fa-regular fa-circle-play"></i>
+              <div v-for="(disc, index) in discs" :key="`disc-${index}`"
+               class="col mb-4">
+                <div class="gb-card text-center p-2">
+                  <div class="cover-image">
+                    <img class="w-100" :src="disc.poster" :alt="disc.title">
+                    <!-- Layover e animazione -->
+                    <div class="layover">
+                      <div class="play-hover d-flex justify-content-center align-items-center h-100">
+                        <i class="fa-regular fa-circle-play"></i>
+                      </div>
                     </div>
+                    <!-- /Layover e animazione -->
                   </div>
-                  <!-- /Layover e animazione -->
+                  <div class="title-song mt-3">{{disc.title}}</div>
+                  <div class="author-song">{{disc.author}}</div>
+                  <div class="date-song">{{disc.year}}</div>
                 </div>
-                <div class="title-song mt-3">{{disc.title}}</div>
-                <div class="author-song">{{disc.author}}</div>
-                <div class="date-song">{{disc.year}}</div>
               </div>
+
+
             </div>
-            
-          
-
           </div>
+
+          <div v-else class="text-center my-5">{{errorMessage}}</div>
+          <!-- /Logica errore -->
+
         </div>
-
-
-      </div>
-
+      <!-- /CONTENT BOTTOM -->
 
     </div>
-
   </div>
 
   <script src="./js/script.js"></script>
