@@ -30,6 +30,7 @@ const app = new Vue ({
 
     errorMessage: '',
     isError: false,
+    isLoading: true
   },
 
   mounted(){
@@ -46,6 +47,7 @@ const app = new Vue ({
       .then(res => {
         this.discs = res.data.discs;
         this.genres = res.data.genres;
+        this.isLoading = false;
         console.log('array dischi', this.discs);
         console.log('array generi', this.genres);
       })

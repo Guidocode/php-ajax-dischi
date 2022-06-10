@@ -56,18 +56,20 @@
 
 
       <!-- CONTENT BOTTOM -->
-        <div class="gb-container p-5">
+      <!-- Logica errore -->
+      <div v-if="!isError"> 
+        <div v-if="!isLoading" class="gb-container p-5">
 
-          <!-- Logica errore -->
-          <div v-if="!isError" class="container-fluid">
+          <div class="container-fluid">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex">
 
 
               <div v-for="(disc, index) in discs" :key="`disc-${index}`"
-               class="col mb-4">
+              class="col mb-4">
                 <div class="gb-card text-center p-2">
                   <div class="cover-image">
                     <img class="w-100" :src="disc.poster" :alt="disc.title">
+
                     <!-- Layover e animazione -->
                     <div class="layover">
                       <div class="play-hover d-flex justify-content-center align-items-center h-100">
@@ -75,6 +77,7 @@
                       </div>
                     </div>
                     <!-- /Layover e animazione -->
+                    
                   </div>
                   <div class="title-song mt-3">{{disc.title}}</div>
                   <div class="author-song">{{disc.author}}</div>
@@ -86,10 +89,20 @@
             </div>
           </div>
 
-          <div v-else class="text-center my-5">{{errorMessage}}</div>
-          <!-- /Logica errore -->
 
         </div>
+
+        <!-- Caricamento fino a che isLoading diventa false -->
+        <!-- Mostro Loading -->
+        <div v-else class="loading py-5 w-100 d-flex justify-content-center align-items-center">
+          <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+        <!-- /Mostro Loading -->
+
+      </div>
+
+      <div v-else class="text-center my-5">{{errorMessage}}</div>
+      <!-- /Logica errore -->
       <!-- /CONTENT BOTTOM -->
 
     </div>
